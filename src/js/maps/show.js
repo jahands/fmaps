@@ -215,8 +215,11 @@
                     }
                     var tileUrl = layer.tiles.url;
                     if (location.host !== "") {
-                        tileUrl = "/" + m.meta.map.path + "/" + tileUrl;
+                        tileUrl = "/" + instance.meta.meta.map.path + "/" + tileUrl;
                     }
+		    if (layer.tiles.backend && layer.tiles.backend.fullUrl && layer.tiles.backend.useMapImagesUrl) {
+			tileUrl = layer.tiles.backend.fullUrl;
+		    }
 		    var options = {
                         id: layer.name,
                         attribution: '<a href="https://mods.factorio.com/mods/credomane/FactorioMaps">FactorioMaps</a>',
